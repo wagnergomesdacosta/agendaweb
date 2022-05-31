@@ -11,5 +11,6 @@ public class RegisterModel {
 	private String email;
 	private String senha;
 	private String senhaConfirmacao;
-
+	
+	
 }

@@ -45,7 +45,8 @@ public class TarefaConsultaController {
 			// enviando mensagens
 			if (tarefas.size() > 0) {
 
-				modelAndView.addObject("mensagem_sucesso", tarefas.size() + "tarefa(s) obtida(s) para a consulta realizada");
+				modelAndView.addObject("mensagem_sucesso",
+						tarefas.size() + "tarefa(s) obtida(s) para a consulta realizada");
 
 			} else {
 
@@ -53,6 +54,31 @@ public class TarefaConsultaController {
 
 			}
 
+		} catch (Exception e) {
+			modelAndView.addObject("mensagem_erro", e.getMessage());
+		}
+
+		modelAndView.addObject("model", new TarefaConsultaModel());
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/excluirtarefa")
+	public ModelAndView excluirTarefa(Integer idTarefa, HttpServletRequest request) {
+
+		ModelAndView modelAndView = new ModelAndView("tarefas-consulta");
+
+		try {
+			Usuario usuario = (Usuario) request.getSession().getAttribute("usuario_auth");
+
+			Tarefa tarefa = new Tarefa();
+			tarefa.setIdTarefa(idTarefa);
+			tarefa.setIdUsuario(usuario.getIdUsuario());
+
+			TarefaRepository tarefaRepository = new TarefaRepository();
+			tarefaRepository.delete(tarefa);
+
+			modelAndView.addObject("mensagem_sucesso", "Tarefa excluída com sucesso");
+			
 		} catch (Exception e) {
 			modelAndView.addObject("mensagem_erro", e.getMessage());
 		}

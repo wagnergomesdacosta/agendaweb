@@ -32,8 +32,8 @@
 	<form action="consultar-tarefas" method="post">
 		<div class="row">
 			<div class="col-md-3">
-				<label>Nome da Tarefa:</label> <form:input path="model.nome" id="nome" name="nome" type="text"
-					class="form-control" placeholder="Digite aqui" />
+				<label>Nome da Tarefa:</label> 
+				<form:input path="model.nome" type="text" id="nome" name="nome" class="form-control" placeholder="Digite aqui" />
 			</div>
 		</div>
 
@@ -79,7 +79,7 @@
 				<td>${t.descricao}</td>
 				<td>
 				<a href="#" class="btn btn-primary btn-sm">Editar</a> 
-				<a href="#" class="btn btn-danger btn-sm">Ecluir</a>
+				<a href="/agendaweb/excluirtarefa?idTarefa=${t.idTarefa}" class="btn btn-danger btn-sm" onclick="return confirm('Deseja excluir a tarefa selecionada?')">Ecluir</a>
 				</td>
 			</tr>
 			</c:forEach>
