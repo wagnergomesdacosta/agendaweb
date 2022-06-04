@@ -80,7 +80,7 @@ input.error, select.error, textarea.error {
 			</div>
 
 		</form>
-
+</div>
 		<!-- arquivos de extensão javascript -->
 		<script src="resources/js/bootstrap.min.js"></script>
 

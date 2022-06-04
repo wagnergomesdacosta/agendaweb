@@ -78,7 +78,7 @@
 					</td>			
 				<td>${t.descricao}</td>
 				<td>
-				<a href="#" class="btn btn-primary btn-sm">Editar</a> 
+				<a href="/agendaweb/tarefas-edicao?id=${t.idTarefa}" class="btn btn-primary btn-sm">Editar</a> 
 				<a href="/agendaweb/excluirtarefa?idTarefa=${t.idTarefa}" class="btn btn-danger btn-sm" onclick="return confirm('Deseja excluir a tarefa selecionada?')">Ecluir</a>
 				</td>
 			</tr>

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,17 @@
 
 <!-- folhas de estilo CSS -->
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+
+<!-- estilos para o JQuery validation -->
+<style>
+label.error {
+	color: red;
+}
+
+input.error, select.error, textarea.error {
+	border: 2px solid red;
+}
+</style>
 
 </head>
 
@@ -26,11 +40,14 @@
 
 					<hr />
 
-					<form>
+					<form id="formRecuperarSenha"
+						action="recuperar-senharecuperarSenha" method="post">
 
 						<div class="mb-3">
-							<label>Email de acesso:</label> <input type="text"
-								class="form-control" placeholder="Digite seu email aqui">
+							<label>Email de acesso:</label>
+							<form:input path="model.email" type="text" id="email"
+								name="email" class="form-control"
+								placeholder="Digite seu email aqui">
 						</div>
 
 						<div class="mb-3">
@@ -42,12 +59,25 @@
 
 						<div class="mb-3">
 							<div class="d-grid">
-								<a href="/agendaweb/" class="btn btn-light"> Voltar para a página inicial.</a>
+								<a href="/agendaweb/" class="btn btn-light"> Voltar para a
+									página inicial.</a>
 
 							</div>
 						</div>
 
 					</form>
+
+					<div class="mt-3 text-success text-center">
+						<strong>${menssagem_sucesso}</strong>
+					</div>
+					<div class="mt-3 text-success text-danger">
+						<strong>${menssagem_erro}</strong>
+					</div>
+
+
+
+
+
 				</div>
 			</div>
 		</div>
@@ -55,6 +85,34 @@
 
 	<!-- arquivos de extensão javascript -->
 	<script src="resources/js/bootstrap.min.js"></script>
+
+	<!-- arquivos de extensão javascript -->
+	<script src="resources/js/bootstrap.min.js"></script>
+
+	<!-- biblioteca do JQuery -->
+	<script src="resources/js/jquery-3.6.0.min.js"></script>
+
+	<!-- biblioteca do JQuery -->
+	<script src="resources/js/jquery.validate.min.js"></script>
+	<script src="resources/js/additional-methods.min.js"></script>
+	<script src="resources/js/messages_pt_BR.min.js"></script>
+
+	<script>
+		//função para inicializar o código javascript(JQuery)
+		$(document).ready(function() {
+
+			$("#formRecuperarSenha").validate({
+				rules : {
+					'email' : {
+						required : true,
+						email : true
+					}
+
+				},
+			})
+		})
+	</script>
+
 
 </body>
 </html>

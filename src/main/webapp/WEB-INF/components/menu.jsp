@@ -21,10 +21,11 @@
 	<div class="container" >
 		<div class="row mb-2">
 			<div class="col-md-12 text-end">
-				<div class="mt-2">
-					Usuário: <span style="font-weight: 500;">${usuario_auth.nome}</span>, email: ${usuario_auth.email}
+				<div class="mt-2 text-dark">
+					Usuário: <span style="font-weight: 500;">${usuario_auth.nome}</span>(${usuario_auth.email})
 					&nbsp;&nbsp;
-					<a href="/agendaweb/logout" class="btn btn-outline-secondary btn-sm" onclick="return confirm('Deseja realmente sair do sistema?');">Sair da Agenda</a>
+					<a href="/agendaweb/minhaconta" class="btn btn-outline-primary btn-sm">Minha Conta</a>
+					<a href="/agendaweb/logout" class="btn btn-outline-danger btn-sm" onclick="return confirm('Deseja realmente sair do sistema?');">Sair da Agenda</a>
 				</div>
 			</div>
 		</div>

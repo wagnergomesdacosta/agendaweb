@@ -50,7 +50,7 @@ public class TarefaConsultaController {
 
 			} else {
 
-				modelAndView.addObject("mensagem_sucesso", "nenhum resultado encontrado para a consulta realizada");
+				modelAndView.addObject("mensagem_alerta", "nenhum resultado encontrado para a consulta realizada");
 
 			}
 
