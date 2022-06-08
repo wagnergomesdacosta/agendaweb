@@ -1,11 +1,14 @@
 package br.com.cotiinformatica.controller;
 
+import java.util.Random;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.cotiinformatica.entities.Usuario;
+import br.com.cotiinformatica.messages.MailMessage;
 import br.com.cotiinformatica.models.PasswordModel;
 import br.com.cotiinformatica.repositories.UsuarioRepository;
 
@@ -35,6 +38,21 @@ public class PasswordController {
 			// verificar se o usuario foi encontrado
 			if (usuario != null) {
 
+				// criando uma nova senha para o usuario
+				String novaSenha = getNewPassword();
+
+				// enviando a mensagem
+				String to = usuario.getEmail();
+				String subject = "Recuperação de senha - AgendaWeb";
+				String body = "Óla" + usuario.getNome() + "\n" + "Sua nova senha é: " + novaSenha
+						+ "Utilise esta senha paraacessar o sistema e depois, caso desejar, altere";
+
+				// enviando a mensagem
+				MailMessage.sendMessage(to, subject, body);
+
+				modelAndView.addObject("menssagem_sucesso",
+						"Uma nova senha foi enviada com sucesso para seu o e-mail " + usuario.getEmail());
+
 			} else {
 
 				throw new Exception("Email invalido, Usuário não encontrado.");
@@ -50,4 +68,9 @@ public class PasswordController {
 
 	}
 
+	// metodo para gerar nova senha para o usuario
+	public String getNewPassword() {
+
+		return String.valueOf(new Random().nextInt(999999999));
+	}
 }

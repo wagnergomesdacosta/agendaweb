@@ -41,13 +41,13 @@ input.error, select.error, textarea.error {
 					<hr />
 
 					<form id="formRecuperarSenha"
-						action="recuperar-senharecuperarSenha" method="post">
+						action="recuperar-senha" method="post">
 
 						<div class="mb-3">
 							<label>Email de acesso:</label>
 							<form:input path="model.email" type="text" id="email"
 								name="email" class="form-control"
-								placeholder="Digite seu email aqui">
+								placeholder="Digite seu email aqui"/>
 						</div>
 
 						<div class="mb-3">
